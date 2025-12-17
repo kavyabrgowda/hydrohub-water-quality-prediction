@@ -6,7 +6,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 from io import BytesIO
 import base64
-from rainfall import get_rainfall_prediction
 import os
 
 
@@ -71,14 +70,6 @@ def water_treatment():
     suggestion = treatment.get_treatment_suggestions(wqi)
     return render_template('treatment.html', suggestion=suggestion)
 
-
-@app.route("/rainfall", methods=["GET", "POST"])
-def rainfall():
-    if request.method == "POST":
-        city = request.form["city"]
-        result = get_rainfall_prediction(city)
-        return render_template("rainfall.html", result=result)
-    return render_template("rainfall.html", result=None)
 
 
 
