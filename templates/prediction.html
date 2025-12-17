@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Quality Prediction</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom Styles -->
+    <link href="{{ url_for('static', filename='css/globals.css') }}" rel="stylesheet">
+</head>
+
+<body class="bg-blue-50 flex items-center justify-center min-h-screen">
+
+    <div class="bg-white shadow-lg rounded-lg p-8 max-w-md w-full">
+        <!-- Heading with No Wrap and Bottom Padding -->
+        <h1 class="text-3xl font-semibold text-center text-gray-800 whitespace-nowrap pb-10">
+            Enter Water Parameters
+        </h1>
+
+        <form action="/predict" method="post" class="space-y-4">
+            <div>
+                <label class="block text-gray-600 font-medium">pH Level:</label>
+                <input type="text" name="ph" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400">
+            </div>
+
+            <div>
+                <label class="block text-gray-600 font-medium">TDS (Total Dissolved Solids):</label>
+                <input type="text" name="tds" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400">
+            </div>
+
+            <div>
+                <label class="block text-gray-600 font-medium">Hardness:</label>
+                <input type="text" name="hardness" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400">
+            </div>
+
+            <button type="submit" class="w-full bg-blue-500 text-white font-semibold py-2 rounded-md hover:bg-blue-600 transition">
+                Submit
+            </button>
+        </form>
+    </div>
+
+</body>
+
+</html>

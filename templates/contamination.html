@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Contamination Level</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom Styles -->
+    <link href="{{ url_for('static', filename='css/globals.css') }}" rel="stylesheet">
+</head>
+
+<body class="bg-blue-50 text-gray-800 min-h-screen flex flex-col items-center justify-center px-6">
+
+    <!-- Water Contamination Level Display -->
+    <h1 class="text-4xl font-semibold text-center text-gray-800 mb-4">
+        Water Contamination Level: <span class="text-red-600">{{ contamination_level }}</span>
+    </h1>
+
+    <p class="text-lg text-gray-700 text-center mb-6">
+        Current WQI Value: <span class="font-medium text-gray-900">{{ wqi }}</span>
+    </p>
+
+    <!-- Image with Proper Sizing -->
+    <img src="data:image/png;base64,{{ graph_url }}" alt="WQI Contamination Graph"
+        class="w-full max-w-3xl mx-auto rounded-lg shadow-md mb-8">
+
+    <!-- Buttons -->
+    <div class="flex flex-col space-y-4 w-full max-w-xs">
+        <a href="/treatment?wqi={{ request.args.get('wqi') }}"
+            class="w-full bg-blue-500 text-white font-semibold py-3 rounded-md text-center hover:bg-blue-600 transition">
+            Get Treatment Suggestions
+        </a>
+
+        <a href="/"
+            class="w-full bg-gray-400 text-white font-semibold py-3 rounded-md text-center hover:bg-gray-500 transition">
+            Go Back
+        </a>
+    </div>
+
+</body>
+
+</html>

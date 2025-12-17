@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Water Quality App</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Custom Styles -->
+  <style>
+    .section {
+      display: none;
+    }
+
+    .section.active {
+      display: block;
+    }
+  </style>
+</head>
+
+<body class="bg-blue-50 text-gray-800 min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="relative bg-cover bg-center flex items-center justify-center shadow-md"
+    style="background-image: url('{{ url_for('static', filename='img/header_background.jpg') }}');">
+    <div class="w-full h-full flex flex-col items-center justify-center p-3">
+      <h2 class="text-black text-6xl font-semibold text-center py-6">HydroHub</h2>
+      <h3 class="text-black text-2xl font-medium text-center mt-1 pb-4">
+        "Accurate Water Prediction for a Better Future"
+      </h3>
+    </div>
+  </header>
+
+  <!-- Layout -->
+  <div class="flex flex-1">
+
+    <!-- Sidebar -->
+    <aside class="w-64 bg-white shadow-md h-content sticky top-0 flex flex-col">
+      <div class="p-6 text-2xl font-bold text-blue-600 border-b">Explore</div>
+      <nav class="flex-1 p-4 space-y-4 text-2xl font-semibold">
+        <button onclick="showSection('home')" class="block w-full text-left text-gray-800 hover:bg-blue-100 px-4 py-2 rounded">Home</button>
+        <button onclick="showSection('predict')" class="block w-full text-left text-gray-800 hover:bg-blue-100 px-4 py-2 rounded">Predict</button>
+        <button onclick="showSection('about')" class="block w-full text-left text-gray-800 hover:bg-blue-100 px-4 py-2 rounded">About</button>
+        <button onclick="showSection('contact')" class="block w-full text-left text-gray-800 hover:bg-blue-100 px-4 py-2 rounded">Contact</button>
+        <a href="https://www.unep.org/topics/fresh-water/water-quality/monitoring-water-quality" target="_blank" class="block w-full text-left text-gray-800 hover:bg-blue-100 px-4 py-2 rounded">
+          Know More
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-10 space-y-10">
+
+    <!-- Home Section -->
+    <section id="home" class="section bg-white py-16 px-6 sm:px-10 lg:px-20 rounded-xl shadow-2xl transition-all duration-300 hover:shadow-blue-200 text-center">
+      <div class="max-w-7xl mx-auto">
+        
+        <!-- Welcome Text and Image -->
+        <div class="flex flex-col lg:flex-row items-center gap-10 mb-16">
+          <div class="lg:w-1/2 text-center lg:text-left">
+            <h2 class="text-5xl font-extrabold text-blue-700 mb-4 leading-tight">Welcome to <span class="text-blue-500">HydroHub</span></h2>
+            <p class="text-lg text-gray-600 leading-relaxed">
+              Empowering the world with intelligent, real-time water quality monitoring. Dive into our platform to ensure safe, sustainable, and smart water practices for the future.
+            </p>
+          </div>
+          <div class="lg:w-1/2">
+            <img src="{{ url_for('static', filename='img/home_illustration.jpg') }}" alt="HydroHub Illustration" class="rounded-xl shadow-md object-cover w-full max-h-80">
+          </div>
+        </div>
+    
+        <!-- Mission and Vision -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mb-16">
+          <!-- Mission -->
+          <div class="bg-blue-50 p-8 rounded-lg shadow hover:shadow-md transition">
+            <div class="flex items-center mb-4 flex justify-center">
+              <img src="{{ url_for('static', filename='img/mission_icon.jpg') }}" class="w-10 h-10 mr-3" alt="Mission Icon">
+              <h3 class="text-2xl font-bold text-blue-800">Our Mission</h3>
+            </div>
+            <p class="text-gray-700 leading-relaxed">
+              To revolutionize water safety through accessible and accurate prediction tools. HydroHub aims to support informed decision-making and environmental responsibility at every level — from individual use to policy-making.
+            </p>
+          </div>
+    
+          <!-- Vision -->
+          <div class="bg-blue-50 p-8 rounded-lg shadow hover:shadow-md transition">
+            <div class="flex items-center mb-4 flex justify-center">
+              <img src="{{ url_for('static', filename='img/vision_icon.jpg') }}" class="w-10 h-10 mr-3" alt="Vision Icon">
+              <h3 class="text-2xl font-bold text-blue-800">Our Vision</h3>
+            </div>
+            <p class="text-gray-700 leading-relaxed">
+              To build a globally trusted platform that enhances public awareness, supports eco-innovation, and inspires a future where clean water is a guaranteed right — not a privilege.
+            </p>
+          </div>
+        </div>
+        
+        <!-- Features Section -->
+        <div class="text-center mb-10">
+          <h3 class="text-3xl font-bold text-blue-600 mb-4">Key Features</h3>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            HydroHub provides a seamless experience with robust, scalable, and accurate water quality prediction features designed for users across all backgrounds.
+          </p>
+        </div>
+    
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+          <!-- Feature 1 -->
+          <div class="p-6 bg-white border border-gray-100 rounded-lg shadow hover:shadow-md transition">
+            <img src="{{ url_for('static', filename='img/instant_prediction.jpg') }}" class="w-16 h-16 mx-auto mb-4" alt="Instant Prediction">
+            <h4 class="text-xl font-semibold text-blue-700 mb-2">Real-Time Prediction</h4>
+            <p class="text-gray-600">Immediate insights using machine learning models based on key input parameters.</p>
+          </div>
+    
+          <!-- Feature 2 -->
+          <div class="p-6 bg-white border border-gray-100 rounded-lg shadow hover:shadow-md transition">
+            <img src="{{ url_for('static', filename='img/data_analytics.jpg') }}" class="w-16 h-16 mx-auto mb-4" alt="Data Insights">
+            <h4 class="text-xl font-semibold text-blue-700 mb-2">Data-Driven Insights</h4>
+            <p class="text-gray-600">Make informed choices using visualized historical and live water quality data.</p>
+          </div>
+    
+          <!-- Feature 3 -->
+          <div class="p-6 bg-white border border-gray-100 rounded-lg shadow hover:shadow-md transition">
+            <img src="{{ url_for('static', filename='img/accessibility_icon.jpg') }}" class="w-16 h-16 mx-auto mb-4" alt="Global Access">
+            <h4 class="text-xl font-semibold text-blue-700 mb-2">Global Accessibility</h4>
+            <p class="text-gray-600">HydroHub is responsive, multilingual, and accessible to users around the world.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+      <!-- Predict Section -->
+      <section id="predict" class="section ">
+        <div class=" shadow-lg rounded-lg p-8 w-40% flex justify-center">
+          <!-- Water Quality Prediction Card -->
+          <section class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition duration-300">
+            <img src="{{ url_for('static', filename='img/water_quality.jpg') }}"
+               alt="Water Quality"
+               class="w-full h-48 object-cover">
+            <a href="/predict" class="block w-full text-center py-4 text-lg font-semibold bg-gray-300 hover:bg-gray-400 transition">
+              Water Quality Prediction
+            </a>
+          </section>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section id="about" class="section bg-white shadow-xl rounded-2xl p-10 transition-all duration-300 hover:shadow-2xl">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-4xl font-bold text-blue-700 mb-6 border-b-2 border-blue-200 pb-2">About HydroHub</h2>
+      
+          <p class="text-gray-700 text-lg leading-relaxed mb-6">
+            <strong>HydroHub</strong> is an AI-powered water quality monitoring and prediction platform committed to enhancing access to safe and clean water. It is built to assist governments, researchers, environmentalists, and citizens in making informed decisions about water usage, health, and sustainability.
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+            <div>
+              <h3 class="text-2xl font-semibold text-blue-600 mb-2">🎯 Project Objective</h3>
+              <p class="text-gray-700">
+                The objective of HydroHub is to provide real-time predictions and visual insights based on critical water parameters. This empowers early detection of potential contamination and supports sustainable water resource planning.
+              </p>
+            </div>
+            <div>
+              <h3 class="text-2xl font-semibold text-blue-600 mb-2">⚙️ Key Features</h3>
+              <ul class="list-disc list-inside text-gray-700 space-y-1">
+                <li>Instant water quality prediction</li>
+                <li>User-friendly web interface</li>
+                <li>Minimal input, maximum accuracy</li>
+                <li>Responsive design across devices</li>
+                <li>Customizable and scalable</li>
+              </ul>
+            </div>
+          </div>
+      
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+            <div>
+              <h3 class="text-2xl font-semibold text-blue-600 mb-2">🧪 Parameters Monitored</h3>
+              <ul class="list-disc list-inside text-gray-700 space-y-1">
+                <li>pH Level</li>
+                <li>Dissolved Oxygen (DO)</li>
+                <li>Turbidity</li>
+                <li>Conductivity</li>
+                <li>Temperature (optional)</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="text-2xl font-semibold text-blue-600 mb-2">🌟 Importance of HydroHub</h3>
+              <p class="text-gray-700">
+                Access to clean water is vital for life, health, and sustainable ecosystems. HydroHub plays a crucial role in:
+              </p>
+              <ul class="list-disc list-inside text-gray-700 space-y-1 mt-2">
+                <li>Preventing waterborne diseases through early prediction</li>
+                <li>Assisting policy makers in data-driven decisions</li>
+                <li>Raising public awareness about water conditions</li>
+                <li>Supporting SDG 6: Clean Water and Sanitation</li>
+                <li>Encouraging community participation in water conservation</li>
+              </ul>
+            </div>
+          </div>
+      
+          <div class="bg-blue-50 p-6 rounded-lg border border-blue-100">
+            <h3 class="text-2xl font-semibold text-blue-600 mb-2">🌍 Why HydroHub Matters</h3>
+            <p class="text-gray-700 text-md">
+              With rising industrial waste, agricultural runoff, and climate-induced changes, water quality is becoming harder to monitor manually. HydroHub provides an intelligent solution that bridges science and accessibility — ensuring that communities stay informed, safe, and empowered to protect water as a vital resource.
+            </p>
+          </div>
+        </div>
+      </section>
+
+
+<!-- Contact Section -->
+<section id="contact" class="section bg-white py-16 px-6 sm:px-10 lg:px-20 rounded-xl shadow-2xl transition-all duration-300 hover:shadow-blue-200">
+  <div class="max-w-7xl mx-auto">
+
+    <!-- Contact Heading -->
+    <h2 class="text-5xl font-extrabold text-center text-blue-700 mb-10">Contact Us</h2>
+    <p class="text-center text-gray-600 mb-16 text-lg max-w-3xl mx-auto">
+      Get in touch with our core team members for collaborations, queries, or more insights about HydroHub.
+    </p>
+
+    <!-- Team Members -->
+    <h3 class="text-4xl font-bold text-center mb-8">Our Team</h3>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+
+      <!-- Team Member 1 -->
+      <div class="bg-blue-50 p-8 rounded-xl shadow-md hover:shadow-lg transition-all">
+        <img src="{{ url_for('static', filename='img/Kavya.jpg') }}" alt="Kavya"
+             class="w-40 h-40 rounded-full mx-auto object-cover shadow mb-4 border-4 border-blue-200">
+        <h4 class="text-2xl font-semibold text-center text-blue-800">KAVYA B R</h4>
+        <p class="text-center text-sm text-gray-500 mb-2">Back-End Lead Developer</p>
+        <p class="text-center text-gray-700 mb-4">
+          Focused on Machine learning model creation and integration. Responsible for Server-side Development, Database Management and Data Analysis.
+        </p>
+        <div class="text-sm text-gray-600 leading-6">
+          <p><strong>Contact:</strong> +91 8618066371</p>
+          <p><strong>Email:</strong> kavyabrgowda.03@gmail.com</p>
+          <p><strong>College:</strong> East West Institute of Technology</p>
+          <p><strong>Degree:</strong> B.E in Computer Science</p>
+          <p><strong>LinkedIn:</strong> 
+            <a href="https://www.linkedin.com/in/kavya-b-r-226730306/" class="text-blue-600 underline hover:text-blue-700">View Profile</a>
+          </p>
+          <p><strong>Skills:</strong> Python, ML, Data Analysis, Flask, DBMS, OCR, Web APIs</p>
+        </div>
+      </div>
+
+      <!-- Team Member 2 -->
+      <div class="bg-blue-50 p-8 rounded-xl shadow-md hover:shadow-lg transition-all">
+        <img src="{{ url_for('static', filename='img/Akhila.jpg') }}" alt="Akhila"
+             class="w-40 h-40 rounded-full mx-auto object-cover shadow mb-4 border-4 border-blue-200">
+        <h4 class="text-2xl font-semibold text-center text-blue-800">AKHILA T</h4>
+        <p class="text-center text-sm text-gray-500 mb-2">Front-End Lead Developer</p>
+        <p class="text-center text-gray-700 mb-4">
+          Designs and Implements the user interface and Styles for the Web Application. Responsible for Client-side Development and Interaction.
+        </p>
+        <div class="text-sm text-gray-600 leading-6">
+          <p><strong>Contact:</strong> +91 9481703009</p>
+          <p><strong>Email:</strong> 2003akhilat@gmail.com</p>
+          <p><strong>College:</strong> East West Institute of Technology</p>
+          <p><strong>Degree:</strong> B.E in Computer Science</p>
+          <p><strong>LinkedIn:</strong> 
+            <a href="https://www.linkedin.com/in/akhila-t-3205372b0/" class="text-blue-600 underline hover:text-blue-700">View Profile</a>
+          </p>
+          <p><strong>Skills:</strong> React JS, Node JS, Tailwind CSS, JavaScript, TypeScript, Web Apps</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+      <!-- Know More -->
+      <section id="know more" class="section">
+        <div class="bg-white shadow-lg rounded-lg p-8">
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white">
+    <div class="p-3 text-lg flex flex-col md:flex-row justify-between items-start">
+      <p class="text-left pl-10">&copy; 2025 HydroHub. All rights reserved.</p>
+      <div class="flex flex-col items-center space-y-4 md:flex-row md:space-y-0 md:space-x-4">
+        <p class="hover:shadow-outer transform hover:scale-110 cursor-pointer transition ease-out duration-200 pr-10">
+          <a href="https://www.instagram.com/medaignosis/profilecard/?igsh=ODloZ3l3dmh6cXp4">Instagram</a>
+        </p>
+        <!--<p class="hover:shadow-outer transform hover:scale-110 cursor-pointer transition ease-out duration-200 pr-10">
+          <a href="#">About Us</a>
+        </p>-->
+        <p class="hover:shadow-outer transform hover:scale-110 cursor-pointer transition ease-out duration-200 pr-10">
+          <a href="https://www.unep.org/topics/fresh-water/water-quality/monitoring-water-quality">Know More</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Section Toggle Script -->
+  <script>
+    function showSection(sectionId) {
+      const sections = document.querySelectorAll('.section');
+      sections.forEach(section => {
+        section.classList.remove('active');
+      });
+
+      const activeSection = document.getElementById(sectionId);
+      if (activeSection) {
+        activeSection.classList.add('active');
+        activeSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    // Initialize default section
+    window.onload = () => showSection('home');
+  </script>
+
+</body>
+</html>
